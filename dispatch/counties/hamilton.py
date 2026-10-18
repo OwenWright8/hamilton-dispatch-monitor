@@ -104,6 +104,17 @@ PROFILE = Profile(
                   "Cumberland Road, Little Chicago Road, Durbin Road, Strawtown Avenue, Jackson Street, Main Street"),
     place_examples='"Grand Park", "Riverview Health", "Ruoff Music Center", "Hamilton Town Center", "Clay Terrace"',
     unit_examples='"Medic 341", "Engine 391", "Ladder 381", "Engine 321", "Medic 355", "Battalion 370"',
+    # Mishearings found transcribing two days of county dispatch audio.
+    transcript_fixes=(
+        (r"\b(?:meso|medal|metal|mental)[\s/-]*emotional\b", "mental/emotional"),
+        (r"\btang(?:er|o)\s+(?=3?\d{2}\b)", "Tanker "),
+        (r"\b(?:ringel|ringle|residual|rezidential|residental)\s+alarm\b", "residential alarm"),
+        (r"\bchest\s+(?:pave|pains?|paint)\b", "chest pain"),
+        (r"\bdifficulty\s+(?:rebate|breeding|breathe|breathin)\b", "difficulty breathing"),
+        (r"\bunconscious or (?:thinking|fanting|fainting)\b", "unconscious or fainting"),
+        (r"\binjured (?:version|person)\b", "injured person"),
+        (r"\b(?:time ?out|timeout)\b(?=,?\s*\d{3,4}\b)", "tone time"),
+    ),
     place_aliases={
         "riverview": "Riverview Health",
         "ruoff": "Ruoff Music Center",

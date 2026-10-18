@@ -123,22 +123,45 @@ docker compose up -d --build
 GitHub Actions publishes `ghcr.io/owenwright8/hamilton-dispatch-monitor` (amd64 + arm64) on pushes to
 `main`. The Ollama image comes from the upstream repo.
 
+## Settings
+
+Most settings can be changed from the dashboard: **Settings** in the header. That covers:
+- the AI model (on/off, Ollama address, model, timeout)
+- the speech-to-text model and beam size
+- which channels are monitored, how often to poll, and the minimum clip length
+- the incident merge window
+- whether audio is kept
+- the CARTO map key
+
+Values saved there are stored in the database, override `.env`, and apply within a few seconds without a
+restart. **Reset** goes back to the `.env` / built-in value. If the dashboard is reachable from the
+internet, set `ADMIN_PASSWORD` in `.env`. Saving settings then requires it, while viewing stays open.
+
+## Versions
+
+Releases are tagged `vMAJOR.MINOR.PATCH` and listed on the GitHub *Releases* page with what changed. Each
+release publishes the image as `:1.0.0`, `:1.0` and `:1` as well as `:latest`. To stay on a version,
+use e.g. `ghcr.io/owenwright8/hamilton-dispatch-monitor:1.0` in `docker-compose.yml`. The running version
+is shown in the Settings panel.
+
 ## Configuration
 
-All settings are optional and go in `.env` (see `.env.example`):
+All settings are optional and go in `.env` (see `.env.example`). The ones marked ⚙ can also be changed
+in the dashboard:
 
 | Variable | Default | |
 |---|---|---|
-| `OLLAMA_URL` | `http://ollama:11434` | an Ollama on the host: `http://host.docker.internal:11434` |
-| `OLLAMA_MODEL` | `qwen2.5:7b` | pulled automatically if missing |
-| `LLM_ENABLED` | `true` | `false` = keyword rules only, no Ollama |
-| `WHISPER_MODEL` | `small.en` | `base.en` / `small.en` / `medium.en` |
+| `ADMIN_PASSWORD` | empty | required to save settings in the dashboard when set |
+| `OLLAMA_URL` ⚙ | `http://ollama:11434` | an Ollama on the host: `http://host.docker.internal:11434` |
+| `OLLAMA_MODEL` ⚙ | `qwen2.5:7b` | pulled automatically if missing |
+| `LLM_ENABLED` ⚙ | `true` | `false` = keyword rules only, no Ollama |
+| `WHISPER_MODEL` ⚙ | `small.en` | `base.en` / `small.en` / `medium.en` / `large-v3` |
 | `BACKFILL_HOURS` | `24` | history to load on first start; `0` = live only |
 | `CHANNELS` | the three above | `talkgroup:label:city-hint,…`; a label naming a department credits it |
-| `KEEP_AUDIO` | `true` | keep dispatch clips (about 100 KB each) in `/data/audio` |
-| `INCIDENT_WINDOW_MIN` | `20` | transmissions merge into one incident within this window |
+| `KEEP_AUDIO` ⚙ | `true` | keep dispatch clips (about 100 KB each) in `/data/audio` |
+| `INCIDENT_WINDOW_MIN` ⚙ | `20` | transmissions merge into one incident within this window |
 | `WEB_PORT` | `8087` | host port |
-| `CARTO_API_KEY` | empty | [CARTO basemaps](https://carto.com/basemaps) key for the dark/light map style |
+| `CARTO_API_KEY` ⚙ | empty | [CARTO basemaps](https://carto.com/basemaps) key for the dark/light map style |
 
 ## Maintenance
 
