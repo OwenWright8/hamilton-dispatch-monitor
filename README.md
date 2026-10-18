@@ -158,6 +158,7 @@ in the dashboard:
 | `OLLAMA_URL` ⚙ | `http://ollama:11434` | an Ollama on the host: `http://host.docker.internal:11434` |
 | `OLLAMA_MODEL` ⚙ | `qwen2.5:7b` | pulled automatically if missing |
 | `LLM_ENABLED` ⚙ | `true` | `false` = keyword rules only, no Ollama |
+| `WHISPER_URL` ⚙ | empty | a [whisper-asr-webservice](https://github.com/ahmetoner/whisper-asr-webservice) on a GPU (e.g. `large-v3`); the built-in model takes over if it's down |
 | `WHISPER_MODEL` ⚙ | `small.en` | `base.en` / `small.en` / `medium.en` / `large-v3` |
 | `BACKFILL_HOURS` | `24` | history to load on first start; `0` = live only |
 | `CHANNELS` | the three above | `talkgroup:label:city-hint,…`; a label naming a department credits it |
