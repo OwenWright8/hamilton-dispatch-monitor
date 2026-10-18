@@ -32,12 +32,10 @@ air ("Ladder 72" is Ladder 372). Each incident lists the departments sent:
 | Noblesville Fire | 37x | Noblesville / Noblesville Township |
 | Westfield Fire | 38x | Westfield / Washington Township |
 | Cicero Fire | 32x | Cicero |
-| Jackson Township Fire | 35x | Jackson Township / Arcadia |
-| Atlanta Fire | — (by name) | Town of Atlanta |
+| Jackson Township Fire | 35x | Jackson Township / Arcadia & Atlanta |
 | Sheridan Fire | 36x | Sheridan / Adams Township |
 | Wayne Township Fire | 31x | Wayne Township |
 | White River Township Fire | 33x | White River Township / Strawtown |
-| Seals Ambulance | — (by name) | Contract ambulance |
 | Zionsville, Lawrence, Indianapolis, Lapel, Pendleton, Tipton | by name | Mutual aid from neighboring counties |
 
 Sources: [Hamilton County fire department directory](https://www.hamiltoncounty.in.gov/577/County-Fire-Departments),
@@ -137,6 +135,11 @@ Values saved there are stored in the database, override `.env`, and apply within
 restart. **Reset** goes back to the `.env` / built-in value. If the dashboard is reachable from the
 internet, set `ADMIN_PASSWORD` in `.env`. Saving settings then requires it, while viewing stays open.
 
+**Data retention** (also in Settings): dispatch audio clips are kept for 24 hours; call details (transcripts,
+summaries, patient age/sex, units) for 7 days; and the incident itself (call type, location, departments,
+time) for 365 days, which is what the statistics use. `python -m dispatch reprocess` rebuilds only the
+incidents that still have transcripts.
+
 ## Versions
 
 Releases are tagged `vMAJOR.MINOR.PATCH` and listed on the GitHub *Releases* page with what changed. Each
@@ -158,6 +161,9 @@ in the dashboard:
 | `WHISPER_MODEL` ⚙ | `small.en` | `base.en` / `small.en` / `medium.en` / `large-v3` |
 | `BACKFILL_HOURS` | `24` | history to load on first start; `0` = live only |
 | `CHANNELS` | the three above | `talkgroup:label:city-hint,…`; a label naming a department credits it |
+| `AUDIO_RETENTION_HOURS` ⚙ | `24` | delete audio clips after this |
+| `DETAIL_RETENTION_DAYS` ⚙ | `7` | delete transcripts, summaries, patient info and units after this |
+| `INCIDENT_RETENTION_DAYS` ⚙ | `365` | delete incidents (type, location, departments) after this |
 | `KEEP_AUDIO` ⚙ | `true` | keep dispatch clips (about 100 KB each) in `/data/audio` |
 | `INCIDENT_WINDOW_MIN` ⚙ | `20` | transmissions merge into one incident within this window |
 | `WEB_PORT` | `8087` | host port |
