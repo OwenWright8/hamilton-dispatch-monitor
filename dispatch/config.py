@@ -16,7 +16,7 @@ def _bool(name: str, default: bool) -> bool:
 # Which county this install monitors: a profile in dispatch/counties/.
 from .counties import ChannelSpec, load as _load_profile
 
-PROFILE = _load_profile(_env("COUNTY", "tippecanoe"))
+PROFILE = _load_profile(_env("COUNTY", "hamilton"))
 
 
 @dataclass(frozen=True)

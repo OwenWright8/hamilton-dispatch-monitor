@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tippecanoe Dispatch Monitor</title>
+<title>Hamilton County Dispatch Monitor</title>
 <link rel="stylesheet" href="lib/leaflet.css">
 <script src="lib/leaflet.js"></script>
 <script src="lib/leaflet-heat.js"></script>
@@ -415,7 +415,7 @@ document.querySelector(".tabs").addEventListener("click", e => {
 // ─────────────────────────────────────────────
 // Map
 // ─────────────────────────────────────────────
-const map = L.map("map", { center: [40.4167, -86.8753], zoom: 12, preferCanvas: true });
+const map = L.map("map", { center: [40.05, -86.03], zoom: 11, preferCanvas: true });
 // Leaflet measures its container once; re-measure whenever layout changes it
 // (first paint, window resize, mobile rotation) so tiles fill the whole map.
 new ResizeObserver(() => map.invalidateSize()).observe(document.getElementById("map"));

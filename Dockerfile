@@ -22,7 +22,7 @@ COPY dispatch/ dispatch/
 COPY web/ web/
 
 ENV DATA_DIR=/data \
-    COUNTY=tippecanoe \
+    COUNTY=hamilton \
     BUNDLE_DIR=/opt/bundle \
     WHISPER_MODEL=small.en \
     OLLAMA_URL=http://ollama:11434 \

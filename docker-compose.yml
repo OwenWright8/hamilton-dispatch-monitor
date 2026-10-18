@@ -1,24 +1,29 @@
-# Tippecanoe Dispatch Monitor — the whole stack in one file.
+# Hamilton County Dispatch Monitor — the whole stack in one file.
 #
-#   docker compose up -d        then open http://<this machine>:8086
+#   docker compose up -d        then open http://<this machine>:8087
 #
-# Both images are prebuilt on GitHub with the speech model, AI model and county
-# map data inside, so it starts working as soon as the images are pulled
-# (~7 GB the first time). Optional settings go in a .env file next to this one
-# (see .env.example) — none are required.
+# The app image is prebuilt on GitHub with the speech model and the county's
+# street and place data inside; the AI model server is the shared
+# dispatch-monitor Ollama image (qwen2.5:7b included). The first pull is
+# ~7 GB. Optional settings go in a .env file next to this one (see
+# .env.example) — none are required.
+#
+# Already running Ollama on the host (e.g. for a GPU)? Delete the ollama
+# service and depends_on below and set OLLAMA_URL=http://host.docker.internal:11434
+# plus extra_hosts: ["host.docker.internal:host-gateway"] on the app.
 services:
 
   app:
-    image: ghcr.io/owenwright8/dispatch-monitor:latest
+    image: ghcr.io/owenwright8/hamilton-dispatch-monitor:latest
     # build: .                  # uncomment to build from source instead
     restart: unless-stopped
     ports:
-      - "${WEB_PORT:-8086}:8080"
+      - "${WEB_PORT:-8087}:8080"
     env_file:
       - path: .env
         required: false
     environment:
-      - OLLAMA_URL=http://ollama:11434
+      - OLLAMA_URL=${OLLAMA_URL:-http://ollama:11434}
     volumes:
       - dispatch-data:/data     # database and saved audio clips
     depends_on:
@@ -27,7 +32,6 @@ services:
 
   ollama:
     image: ghcr.io/owenwright8/dispatch-monitor-ollama:latest   # Ollama + qwen2.5:7b
-    # build: { context: ., dockerfile: Dockerfile.ollama }
     restart: unless-stopped
     volumes:
       - ollama-models:/root/.ollama   # seeded from the image; holds any other model you pick

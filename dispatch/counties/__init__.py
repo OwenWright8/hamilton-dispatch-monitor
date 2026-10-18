@@ -5,8 +5,9 @@ this file: which OpenMHz system and talkgroups to listen to, the departments
 that get dispatched (with the ways Whisper mishears their names and the unit
 numbers they use), local street and place vocabulary, and the map area.
 
-Pick one with COUNTY=<module name> (default: tippecanoe). Adding a county is
-one new file here; no other code changes.
+Pick one with COUNTY=<module name> (default: hamilton). Adding a county is
+one new file here; no other code changes. The Tippecanoe County profile lives
+in the upstream repo, github.com/OwenWright8/dispatch-monitor.
 """
 
 from __future__ import annotations
@@ -95,7 +96,7 @@ def available() -> list[str]:
 
 
 def load(key: str) -> Profile:
-    key = (key or "tippecanoe").strip().lower()
+    key = (key or "hamilton").strip().lower()
     try:
         mod = importlib.import_module(f"{__name__}.{key}")
     except ModuleNotFoundError as e:

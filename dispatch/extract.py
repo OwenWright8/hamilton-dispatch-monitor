@@ -73,10 +73,10 @@ How to tell easily confused types apart:
 Allowed natures: {", ".join(ALL_NATURES)}."""
 
 EXAMPLES = [
-    ("TEAS, Buck Creek Fire, TEAS, Buck Creek Fire, be en route 5585 North 900 East, 5585 North 900 East, "
-     "smoke detector going off in the barn, no smoke or fire seen, tone time 0705.",
-     {"is_dispatch": True, "address": "5585 North 900 East", "place": None, "nature": "Fire Alarm",
-      "units": [], "patient_age": None, "patient_sex": None,
+    ("Engine 321, Medic 355, 22510 Hinkle Road, 22510 Hinkle Road, smoke detector going off in the barn, "
+     "caller sees no smoke or fire, 0705.",
+     {"is_dispatch": True, "address": "22510 Hinkle Road", "place": None, "nature": "Fire Alarm",
+      "units": ["Engine 321", "Medic 355"], "patient_age": None, "patient_sex": None,
       "summary": "Smoke detector sounding in barn, no fire seen."}),
     ("Station 7, stand by for a medical run, the 3106 Eagles Way Drive, Apartment 1309. Station 7, 3106 Eagles "
      "Way Drive. I have a 73-year-old male who fell in the bathroom, he's now stuck between the wall and the "
