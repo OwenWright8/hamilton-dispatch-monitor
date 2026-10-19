@@ -141,6 +141,8 @@ PROFILE = Profile(
         "81": Station(40.0334, -86.1835, "Westfield Fire", "Station 81", "17001 Ditch Rd"),
         "82": Station(40.0075, -86.1246, "Westfield Fire", "Station 82", "1920 E 151st St"),
         "83": Station(40.0484, -86.1093, "Westfield Fire", "Station 83", "17944 Grassy Branch Rd"),
+        "84": Station(40.0424, -86.1500, "Westfield Fire", "Station 84", "1315 E 191st St"),
+        "85": Station(40.0855, -86.1751, "Westfield Fire", "Station 85 (opening 2027)", "20565 Six Points Rd"),
         "91": Station(39.9595, -86.0178, "Fishers Fire", "Station 91", "2 Municipal Dr"),
         "92": Station(39.9574, -85.9424, "Fishers Fire", "Station 92", "11595 Brooks School Rd"),
         "93": Station(39.9386, -86.0523, "Fishers Fire", "Station 93", "10501 Allisonville Rd"),
