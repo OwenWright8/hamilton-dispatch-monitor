@@ -129,7 +129,7 @@ PROFILE = Profile(
         "44": Station(39.9785, -86.0841, "Carmel Fire", "Station 44", "5032 E Main St"),
         "45": Station(39.9428, -86.1459, "Carmel Fire", "Station 45", "10701 N College Ave"),
         "46": Station(39.9850, -86.1682, "Carmel Fire", "Station 46", "540 W 136th St"),
-        "55": Station(40.1761, -86.0286, "Jackson Township Fire", "Station 55", "508 W Main St, Arcadia"),
+        "55": Station(40.1758, -86.0364, "Jackson Township Fire", "Station 55", "7450 E 266th St, Arcadia"),
         "61": Station(40.1339, -86.2207, "Sheridan Fire", "Station 61", "506 S Main St"),
         "71": Station(40.0443, -86.0136, "Noblesville Fire", "Station 71", "135 S 9th St"),
         "72": Station(40.0622, -86.0490, "Noblesville Fire", "Station 72", "400 S Harbour Dr"),
